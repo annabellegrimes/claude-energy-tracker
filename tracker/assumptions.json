@@ -1,0 +1,34 @@
+{
+ "_about": "How tokens become energy. Every number here is an assumption you can change; tracker/update.py reads this file. Prices are Anthropic's list prices in US dollars per million tokens (first-party API, October 2026). Cache writes cost 1.25 times fresh input and cache reads 0.1 times, on every model.",
+ "prices": {
+  "claude-fable-5-1": [10.00, 50.00],
+  "claude-fable-5": [10.00, 50.00],
+  "claude-mythos-5-1": [10.00, 50.00],
+  "claude-opus-5-5": [4.00, 20.00],
+  "claude-opus-5": [5.00, 25.00],
+  "claude-opus-4-8": [5.00, 25.00],
+  "claude-opus-4-7": [5.00, 25.00],
+  "claude-opus-4-6": [5.00, 25.00],
+  "claude-sonnet-5-5": [2.00, 10.00],
+  "claude-sonnet-5": [2.00, 10.00],
+  "claude-sonnet-4-6": [3.00, 15.00],
+  "claude-haiku-5-5": [0.10, 0.50],
+  "claude-haiku-4-5": [1.00, 5.00]
+ },
+ "fallback_model": "claude-sonnet-5-5",
+ "cache_write_factor": 1.25,
+ "cache_read_factor": 0.1,
+ "_anchor": "One typical chatbot answer (about 1,000 tokens in and 500 out on a mid-sized model, here Claude Sonnet 5.5) is taken to use 0.3 Wh, the figure published estimates converge on (Epoch AI 2025: about 0.3 Wh for a typical GPT-4o query; Google 2025: 0.24 Wh for the median Gemini text prompt; OpenAI 2025: 0.34 Wh for the average ChatGPT query). The low and high ends allow for a factor of three either way, since no provider publishes per-token figures for Claude. Energy then scales with the list price of the tokens, used as a stand-in for the computing work behind them.",
+ "anchor": {"model": "claude-sonnet-5-5", "input_tokens": 1000, "output_tokens": 500, "wh": {"low": 0.1, "central": 0.3, "high": 0.9}},
+ "comparisons": [
+  {"name": "a Google search", "wh": 0.3, "source": "Google, \"Powering a Google search\" (2009)"},
+  {"name": "a 10 W LED bulb on for an hour", "wh": 10, "source": "10 W for 1 h"},
+  {"name": "a full phone charge", "wh": 15, "source": "a 4,000 mAh battery at 3.85 V"},
+  {"name": "a minute of the microwave", "wh": 20, "source": "about 1.2 kW for 1 min"},
+  {"name": "an hour on a laptop", "wh": 50, "source": "a typical 30–60 W draw"},
+  {"name": "an hour of streaming video", "wh": 77, "source": "IEA, \"The carbon footprint of streaming video: fact-checking the headlines\" (2020)"},
+  {"name": "boiling a litre of water in a kettle", "wh": 100, "source": "4.18 kJ/kg·K × 80 K, at about 90% efficiency"},
+  {"name": "driving an electric car 1 km", "wh": 170, "source": "a typical 15–20 kWh per 100 km"},
+  {"name": "running a fridge for a day", "wh": 1000, "source": "a typical 300–400 kWh a year"}
+ ]
+}
