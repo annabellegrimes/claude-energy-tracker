@@ -134,6 +134,32 @@ def chart(daily, path):
     open(path, "w", encoding="utf-8").write("\n".join(s))
 
 
+def write_weekly(rows, k):
+    """data/weekly.json, for the dashboard: energy per week (Monday to Sunday), its range, and where it went."""
+    weeks = {}
+    for (day, model), t in rows.items():
+        d = dt.date.fromisoformat(day); wk = (d - dt.timedelta(days=d.weekday())).isoformat()
+        w = weeks.setdefault(wk, {"week": wk, "days": set(), "responses": 0, "tokens": {f: 0 for f in FIELDS[3:]},
+                                  "wh": {lv: 0.0 for lv in LEVELS}, "wh_by_type": {f: 0.0 for f in FIELDS[3:]}, "wh_by_model": {}})
+        usd = dollars(model, t)
+        w["days"].add(day); w["responses"] += t["responses"]
+        for f in FIELDS[3:]:
+            w["tokens"][f] += t[f]
+            w["wh_by_type"][f] += dollars(model, {g: (t[g] if g == f else 0) for g in FIELDS[3:]}) * k["central"]
+        for lv in LEVELS: w["wh"][lv] += usd * k[lv]
+        w["wh_by_model"][model] = w["wh_by_model"].get(model, 0.0) + usd * k["central"]
+    out = []
+    for wk in sorted(weeks):
+        w = weeks[wk]; w["days_used"] = len(w.pop("days"))
+        w["wh"] = {lv: round(v, 1) for lv, v in w["wh"].items()}
+        w["wh_by_type"] = {f: round(v, 1) for f, v in w["wh_by_type"].items()}
+        w["wh_by_model"] = {m_: round(v, 1) for m_, v in sorted(w["wh_by_model"].items(), key=lambda kv: -kv[1])}
+        out.append(w)
+    data = {"updated": dt.date.today().isoformat(), "anchor": A["anchor"], "comparisons": A["comparisons"], "weeks": out}
+    with open(os.path.join(ROOT, "data", "weekly.json"), "w", encoding="utf-8") as fh:
+        json.dump(data, fh, indent=1, ensure_ascii=False)
+
+
 def main():
     rows = merge(collect())
     os.makedirs(os.path.join(ROOT, "data"), exist_ok=True)
@@ -179,6 +205,7 @@ def main():
           "| Model | Responses | Tokens | Energy (central) |", "|---|---|---|---|"]
     for name, mm in sorted(models.items(), key=lambda kv: -kv[1]["wh"]):
         md.append(f"| `{name}` | {mm['responses']:,} | {fmt_n(mm['tokens'])} | {fmt_wh(mm['wh'])} |")
+    write_weekly(rows, k)
     readme = os.path.join(ROOT, "README.md")
     text = open(readme, encoding="utf-8").read()
     a, b = "<!-- summary:start -->", "<!-- summary:end -->"

@@ -1,0 +1,163 @@
+{
+ "updated": "2026-11-06",
+ "anchor": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 1000,
+  "output_tokens": 500,
+  "wh": {
+   "low": 0.1,
+   "central": 0.3,
+   "high": 0.9
+  }
+ },
+ "comparisons": [
+  {
+   "name": "a Google search",
+   "wh": 0.3,
+   "source": "Google, \"Powering a Google search\" (2009)"
+  },
+  {
+   "name": "a 10 W LED bulb on for an hour",
+   "wh": 10,
+   "source": "10 W for 1 h"
+  },
+  {
+   "name": "a full phone charge",
+   "wh": 15,
+   "source": "a 4,000 mAh battery at 3.85 V"
+  },
+  {
+   "name": "a minute of the microwave",
+   "wh": 20,
+   "source": "about 1.2 kW for 1 min"
+  },
+  {
+   "name": "an hour on a laptop",
+   "wh": 50,
+   "source": "a typical 30–60 W draw"
+  },
+  {
+   "name": "an hour of streaming video",
+   "wh": 77,
+   "source": "IEA, \"The carbon footprint of streaming video: fact-checking the headlines\" (2020)"
+  },
+  {
+   "name": "boiling a litre of water in a kettle",
+   "wh": 100,
+   "source": "4.18 kJ/kg·K × 80 K, at about 90% efficiency"
+  },
+  {
+   "name": "driving an electric car 1 km",
+   "wh": 170,
+   "source": "a typical 15–20 kWh per 100 km"
+  },
+  {
+   "name": "running a fridge for a day",
+   "wh": 1000,
+   "source": "a typical 300–400 kWh a year"
+  }
+ ],
+ "weeks": [
+  {
+   "week": "2026-10-12",
+   "responses": 1330,
+   "tokens": {
+    "input": 2664,
+    "cache_write": 6589723,
+    "cache_read": 500263883,
+    "output": 1677992
+   },
+   "wh": {
+    "low": 3808.9,
+    "central": 11426.8,
+    "high": 34280.3
+   },
+   "wh_by_type": {
+    "input": 0.5,
+    "cache_write": 1412.1,
+    "cache_read": 8576.0,
+    "output": 1438.3
+   },
+   "wh_by_model": {
+    "claude-opus-5-5": 11426.8
+   },
+   "days_used": 5
+  },
+  {
+   "week": "2026-10-19",
+   "responses": 1531,
+   "tokens": {
+    "input": 3062,
+    "cache_write": 9326107,
+    "cache_read": 585073185,
+    "output": 1445872
+   },
+   "wh": {
+    "low": 4422.7,
+    "central": 13268.1,
+    "high": 39804.4
+   },
+   "wh_by_type": {
+    "input": 0.5,
+    "cache_write": 1998.5,
+    "cache_read": 10029.8,
+    "output": 1239.3
+   },
+   "wh_by_model": {
+    "claude-opus-5-5": 13268.1
+   },
+   "days_used": 4
+  },
+  {
+   "week": "2026-10-26",
+   "responses": 1926,
+   "tokens": {
+    "input": 4572,
+    "cache_write": 9042958,
+    "cache_read": 711659220,
+    "output": 2094123
+   },
+   "wh": {
+    "low": 5291.4,
+    "central": 15874.3,
+    "high": 47623.0
+   },
+   "wh_by_type": {
+    "input": 0.7,
+    "cache_write": 1909.4,
+    "cache_read": 12176.4,
+    "output": 1787.8
+   },
+   "wh_by_model": {
+    "claude-opus-5-5": 15854.7,
+    "claude-haiku-4-5": 19.7
+   },
+   "days_used": 5
+  },
+  {
+   "week": "2026-11-02",
+   "responses": 1194,
+   "tokens": {
+    "input": 2906,
+    "cache_write": 4907578,
+    "cache_read": 476250971,
+    "output": 1486354
+   },
+   "wh": {
+    "low": 3496.8,
+    "central": 10490.4,
+    "high": 31471.3
+   },
+   "wh_by_type": {
+    "input": 0.5,
+    "cache_write": 1051.6,
+    "cache_read": 8164.3,
+    "output": 1274.0
+   },
+   "wh_by_model": {
+    "claude-opus-5-5": 10490.4
+   },
+   "days_used": 4
+  }
+ ]
+}

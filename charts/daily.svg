@@ -43,6 +43,6 @@
 <text class="t" x="652.8" y="248" text-anchor="middle">11-03</text>
 <rect class="b" x="698.6" y="204.4" width="19.4" height="21.6"><title>2026-11-05: 2.26 kWh (754 Wh to 6.78 kWh)</title></rect>
 <line class="r" x1="708.4" x2="708.4" y1="218.8" y2="161.1"/>
-<rect class="b" x="726.4" y="214.7" width="19.4" height="11.3"><title>2026-11-06: 1.18 kWh (392 Wh to 3.53 kWh)</title></rect>
-<line class="r" x1="736.1" x2="736.1" y1="222.2" y2="192.2"/>
+<rect class="b" x="726.4" y="213.1" width="19.4" height="12.9"><title>2026-11-06: 1.35 kWh (450 Wh to 4.05 kWh)</title></rect>
+<line class="r" x1="736.1" x2="736.1" y1="221.7" y2="187.2"/>
 </svg>
