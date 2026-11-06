@@ -13,25 +13,27 @@ The numbers are estimates, with honest error bars: no AI company publishes the e
 
 | | Low | **Central** | High |
 |---|---|---|---|
-| All time | 17.02 kWh | **51.06 kWh** | 153 kWh |
-| Last 30 days | 17.02 kWh | **51.06 kWh** | 153 kWh |
-| An average day with use | 946 Wh | **2.84 kWh** | 8.51 kWh |
+| All time | 17.40 kWh | **52.19 kWh** | 157 kWh |
+| Last 30 days | 17.40 kWh | **52.19 kWh** | 157 kWh |
+| An average day with use | 967 Wh | **2.90 kWh** | 8.70 kWh |
 
-**All time, the central estimate is about the same energy as:** 663 × an hour of streaming video; 511 × boiling a litre of water in a kettle; 300 × driving an electric car 1 km; 51 × running a fridge for a day.
+**All time, the central estimate is about the same energy as:** 678 × an hour of streaming video; 522 × boiling a litre of water in a kettle; 307 × driving an electric car 1 km; 52 × running a fridge for a day.
 
-**An average day of use is about:** 37 × an hour of streaming video; 28 × boiling a litre of water in a kettle; 17 × driving an electric car 1 km; 2.8 × running a fridge for a day.
+**An average day of use is about:** 38 × an hour of streaming video; 29 × boiling a litre of water in a kettle; 17 × driving an electric car 1 km; 2.9 × running a fridge for a day.
+
+**Next to my commute:** a round trip to SFU in my 2008 Volvo XC70 (18.4 km, about 2.4 L of petrol) takes about 21.29 kWh. All my Claude use so far comes to about 2.5 of those trips (0.8 to 7.4); an average week is about 0.61 of one, and an average day of use 0.14.
 
 ![Energy per day, last 60 days](charts/daily.svg)
 
 *Bars: central estimate per day. Lines: low to high.*
 
-Tokens so far: 6.7 million output (including thinking), 13.2 thousand fresh input, 29.9 million written to the prompt cache and 2.3 billion read back from it.
+Tokens so far: 6.8 million output (including thinking), 13.4 thousand fresh input, 30.0 million written to the prompt cache and 2.3 billion read back from it.
 
-**Where the energy goes:** 76% re-reading the conversation so far (cache reads); 11% writing replies and thinking (output); 12% adding new context to the cache; 0% fresh input. Long sessions re-read a long history with every reply, so starting fresh conversations (or `/clear`) is the biggest saving.
+**Where the energy goes:** 77% re-reading the conversation so far (cache reads); 11% writing replies and thinking (output); 12% adding new context to the cache; 0% fresh input. Long sessions re-read a long history with every reply, so starting fresh conversations (or `/clear`) is the biggest saving.
 
 | Model | Responses | Tokens | Energy (central) |
 |---|---|---|---|
-| `claude-opus-5-5` | 5,942 | 2.3 billion | 51.04 kWh |
+| `claude-opus-5-5` | 6,025 | 2.4 billion | 52.17 kWh |
 | `claude-haiku-4-5` | 39 | 2.0 million | 19.7 Wh |
 <!-- summary:end -->
 

@@ -57,6 +57,14 @@
    "source": "a typical 300–400 kWh a year"
   }
  ],
+ "commute": {
+  "name": "a round-trip drive to SFU in my 2008 Volvo XC70",
+  "short": "drive to SFU and back",
+  "km": 18.4,
+  "l_per_100km": 13.0,
+  "kwh_per_litre": 8.9,
+  "wh": 21289
+ },
  "weeks": [
   {
    "week": "2026-10-12",
@@ -136,26 +144,26 @@
   },
   {
    "week": "2026-11-02",
-   "responses": 1194,
+   "responses": 1277,
    "tokens": {
-    "input": 2906,
-    "cache_write": 4907578,
-    "cache_read": 476250971,
-    "output": 1486354
+    "input": 3088,
+    "cache_write": 5090322,
+    "cache_read": 534511385,
+    "output": 1597209
    },
    "wh": {
-    "low": 3496.8,
-    "central": 10490.4,
-    "high": 31471.3
+    "low": 3874.5,
+    "central": 11623.4,
+    "high": 34870.2
    },
    "wh_by_type": {
     "input": 0.5,
-    "cache_write": 1051.6,
-    "cache_read": 8164.3,
-    "output": 1274.0
+    "cache_write": 1090.8,
+    "cache_read": 9163.1,
+    "output": 1369.0
    },
    "wh_by_model": {
-    "claude-opus-5-5": 10490.4
+    "claude-opus-5-5": 11623.4
    },
    "days_used": 4
   }

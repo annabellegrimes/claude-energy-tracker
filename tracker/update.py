@@ -106,6 +106,21 @@ def like(wh):
     return lines
 
 
+def commute_line(total, per_day, daily):
+    """My own yardstick: the round trip to SFU in my car (tracker/assumptions.json, "commute")."""
+    c = A["commute"]; trip = c["wh"]
+    weeks = {}
+    for d, v in daily.items():
+        dd = dt.date.fromisoformat(d); wk = dd - dt.timedelta(days=dd.weekday())
+        weeks[wk] = weeks.get(wk, 0) + v["central"]
+    per_week = sum(weeks.values()) / len(weeks)
+    n = total["central"] / trip
+    return (f"**Next to my commute:** a round trip to SFU in my 2008 Volvo XC70 ({c['km']:g} km, about "
+            f"{c['km'] * c['l_per_100km'] / 100:.1f} L of petrol) takes about {fmt_wh(trip)}. All my Claude use so far "
+            f"comes to about {n:.1f} of those trips ({total['low'] / trip:.1f} to {total['high'] / trip:.1f}); "
+            f"an average week is about {per_week / trip:.2f} of one, and an average day of use {per_day['central'] / trip:.2f}.")
+
+
 def chart(daily, path):
     """Daily energy (central estimate, with the low to high range) for the last 60 days, as an SVG."""
     if not daily: return
@@ -155,7 +170,8 @@ def write_weekly(rows, k):
         w["wh_by_type"] = {f: round(v, 1) for f, v in w["wh_by_type"].items()}
         w["wh_by_model"] = {m_: round(v, 1) for m_, v in sorted(w["wh_by_model"].items(), key=lambda kv: -kv[1])}
         out.append(w)
-    data = {"updated": dt.date.today().isoformat(), "anchor": A["anchor"], "comparisons": A["comparisons"], "weeks": out}
+    data = {"updated": dt.date.today().isoformat(), "anchor": A["anchor"], "comparisons": A["comparisons"],
+            "commute": {k_: v for k_, v in A["commute"].items() if not k_.startswith("_")}, "weeks": out}
     with open(os.path.join(ROOT, "data", "weekly.json"), "w", encoding="utf-8") as fh:
         json.dump(data, fh, indent=1, ensure_ascii=False)
 
@@ -194,6 +210,7 @@ def main():
           f"| An average day with use | {fmt_wh(per_day['low'])} | **{fmt_wh(per_day['central'])}** | {fmt_wh(per_day['high'])} |", "",
           f"**All time, the central estimate is about the same energy as:** " + "; ".join(like(total["central"])) + ".", "",
           f"**An average day of use is about:** " + "; ".join(like(per_day["central"])) + ".", "",
+          commute_line(total, per_day, daily), "",
           "![Energy per day, last 60 days](charts/daily.svg)", "",
           "*Bars: central estimate per day. Lines: low to high.*", "",
           f"Tokens so far: {fmt_n(tok['output'])} output (including thinking), {fmt_n(tok['input'])} fresh input, "
